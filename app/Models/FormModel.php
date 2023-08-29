@@ -19,4 +19,8 @@ class FormModel extends Model
    {
        return $this->belongsTo(\App\Models\ProfileMdel::class);
    }
+
+   public  function taggs(){
+       return $this->belongsToMany(tags::class);
+   }
 }

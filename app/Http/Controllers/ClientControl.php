@@ -5,16 +5,22 @@ namespace App\Http\Controllers;
 use App\Http\Requests\RequestClient;
 use App\Models\FormModel;
 use App\Models\ProfileMdel;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ClientControl extends Controller
 {
     public function client(){
-        $user = FormModel::find(1);
-        dd($user->monprofile); 
+        //dd( $user->taggs()->name);
         return view('LesClients.client');
 
+    }
 
+    public function showUser(){
+        return view('LesClients.showClient',[
+            'clients'=>FormModel::with('taggs','monprofile')->paginate(5)
+        ]);
     }
 
     public function clientStore(RequestClient $request){
@@ -27,6 +33,8 @@ class ClientControl extends Controller
         return view('LesClients.editer',['UnClient'=>$UnClient]);
     }
     public function clientUpdate(FormModel $UnClient,RequestClient $request){
+        $data = $request->validated();
+        dd($data);
         $UnClient->update($request->validated());
         return redirect()->route('Monblog')->with('success','Client Modifier!') ;
     }

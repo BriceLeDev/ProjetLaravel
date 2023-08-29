@@ -12,7 +12,7 @@ class blogControle extends Controller
 
 
          return view('test',[
-             'post'=> \App\Models\Posts::paginate(1)
+             'post'=> \App\Models\Posts:: paginate(1)
          ]);
     }
     public function show(String $slug , String $id){

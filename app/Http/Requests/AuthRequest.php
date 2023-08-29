@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RequestClient extends FormRequest
+class AuthRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,8 @@ class RequestClient extends FormRequest
     public function rules(): array
     {
         return [
-            'nom'=>['required','min:4','regex:/^[a-z]+$/'],
-            'prenom'=>['required','min:4','regex:/^[a-z]+$/'],
-            'image'=>['image','max:2000','mimes:jpg,bmp,png']
+            'email'=>'required|email',
+            'password'=>['required','min:4']
         ];
     }
 }

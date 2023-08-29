@@ -10,6 +10,10 @@ class ProfileMdel extends Model
     use HasFactory;
 
     protected $fillable=['profile'];
+
+    public function utili(){
+        return $this->hasMany(FormModel::class);
+    }
 }
 
 

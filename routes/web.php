@@ -29,8 +29,10 @@ Route::get('/{slug}-{id}',[\App\Http\Controllers\blogControle::class,'show'])->w
     'id'=>'[0-9]',
     'slug'=>'[a-z0-9\-]+'
 ])->name('article');
-Route::get('/client',[\App\Http\Controllers\ClientControl::class,'client']);
+Route::get('/client',[\App\Http\Controllers\ClientControl::class,'client'])->name('client');
 Route::post('/client',[\App\Http\Controllers\ClientControl::class,'clientStore']);
 Route::get('/edit/{UnClient}',[\App\Http\Controllers\ClientControl::class,'clientEdit'])->name('editer');
+Route::get('/users',[\App\Http\Controllers\ClientControl::class,'showUser'])->name('showUser');
 Route::post('/edit/{UnClient}',[\App\Http\Controllers\ClientControl::class,'clientUpdate'])->name('update');
-
+Route::get('/login',[\App\Http\Controllers\AuthControleur::class, 'login'])->name('auth.login');
+Route::post('/login',[\App\Http\Controllers\AuthControleur::class, 'Dologin']);
